@@ -38,6 +38,10 @@
                             <pattern>com.cryptomorin.xseries</pattern>
                             <shadedPattern>com.roughlyunderscore.all.playermanager</shadedPattern>
                         </relocation>
+                        <relocation>
+                            <pattern>de.jeff_media.updatechecker</pattern>
+                            <shadedPattern>com.roughlyunderscore.all.playermanager.playermanager.updatechecker</shadedPattern>
+                        </relocation>
                     </relocations>
                     <filters>
                         <filter>
@@ -80,6 +84,10 @@
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
+        <repository>
+            <id>jeff-media-gbr</id>
+            <url>https://repo.jeff-media.de/maven2/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -93,6 +101,12 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>de.jeff_media</groupId>
+            <artifactId>SpigotUpdateChecker</artifactId>
+            <version>1.2.5</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
