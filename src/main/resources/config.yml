@@ -20,3 +20,11 @@ ru:
   cant-console: '&cЭта команда не может быть использована консолью!'
   no-such-player: '&cИгрок &6%player% &cне в сети или не найден!'
   no-player-data: '&cНе найдено файла, хранящего данные игрока &6%player%&c!'
+de:
+  could-not-save-file: '&cFehler beim Speichern der Datei &6%name% &c!'
+  no-permissions: '&cKeine Berechtigung!'
+  too-little-arguments: '&cZu wenig Parameter für Befehl &6%command%&c! Benutzung: &b%usage%'
+  too-many-arguments: '&cZu viele Parameter für Befehl &6%command%&c! Benutzung: &b%usage%'
+  cant-console: '&cDieser Befehl kann nur von Spielern ausgeführt werden!'
+  no-such-player: '&cDer Spieler &6%player% &cist nicht online!'
+  no-player-data: '&cKeine Datei gefunden die Informationen über Spieler &6%player%&c enthält!'
