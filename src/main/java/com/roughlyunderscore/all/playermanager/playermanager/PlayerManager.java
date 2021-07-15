@@ -20,7 +20,7 @@ public final class PlayerManager extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        UpdateChecker.init(this, 94298)
+        UpdateChecker.init(this, 94301)
                 .suppressUpToDateMessage(true)
                 .checkNow()
                 .checkEveryXHours(24);
