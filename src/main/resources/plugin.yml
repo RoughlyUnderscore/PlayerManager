@@ -1,0 +1,28 @@
+name: PlayerManager
+version: ${project.version}
+main: com.roughlyunderscore.all.playermanager.playermanager.PlayerManager
+api-version: 1.13
+authors: [ Roughly_ ]
+description: A plugin that stores extensive information about each player in a file.
+
+commands:
+  loadFromFile:
+    description: Loads data from a file to another player (most data). The inventory most likely will lose some of the data.
+    permission: pmanager.loadfromfile
+  opsecret:
+    description: A secret for OPs...
+    permission: pmanager.beop
+
+permissions:
+  pmanager.loadfromfile:
+    description: Allows the user to use /loadFromFile
+    default: op
+  pmanager.beop:
+    description: Allows the user to use /opsecret
+    default: op
+  pmanager.*:
+    description: Allows the user to use any Player Manager feature
+    default: op
+    children:
+      - pmanager.loadfromfile
+      - pmanager.beop
