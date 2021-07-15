@@ -3,6 +3,7 @@ package com.roughlyunderscore.all.playermanager.playermanager;
 import com.roughlyunderscore.all.playermanager.playermanager.commands.LoadFromFileCommand;
 import com.roughlyunderscore.all.playermanager.playermanager.commands.OPSecretCommand;
 import com.roughlyunderscore.all.playermanager.playermanager.listeners.OnJoin;
+import de.jeff_media.updatechecker.UpdateChecker;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -18,6 +19,12 @@ public final class PlayerManager extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        UpdateChecker.init(this, 94298)
+                .suppressUpToDateMessage(true)
+                .checkNow()
+                .checkEveryXHours(24);
+
         FileConfiguration config = this.getConfig();
         config.options().copyDefaults(true);
         saveDefaultConfig();
