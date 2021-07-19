@@ -4,6 +4,9 @@ import com.roughlyunderscore.all.playermanager.playermanager.commands.LoadFromFi
 import com.roughlyunderscore.all.playermanager.playermanager.commands.OPSecretCommand;
 import com.roughlyunderscore.all.playermanager.playermanager.listeners.OnJoin;
 import de.jeff_media.updatechecker.UpdateChecker;
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
+import org.bstats.charts.SingleLineChart;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -13,6 +16,8 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
 
+import java.util.concurrent.Callable;
+
 public final class PlayerManager extends JavaPlugin {
 
     public static Plugin instance; // I was thinking about dependency injection, but I need to pass other arguments in the constructor, so no.
@@ -20,10 +25,20 @@ public final class PlayerManager extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        UpdateChecker.init(this, 94301)
+        int id = 94301;
+
+        UpdateChecker.init(this, id)
                 .suppressUpToDateMessage(true)
                 .checkNow()
                 .checkEveryXHours(24);
+
+        Metrics metrics = new Metrics(this, id);
+        metrics.addCustomChart(new SingleLineChart("Players", new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                return Bukkit.getOnlinePlayers().size();
+            }
+        }));
 
         FileConfiguration config = this.getConfig();
         config.options().copyDefaults(true);

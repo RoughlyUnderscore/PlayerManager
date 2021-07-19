@@ -18,6 +18,12 @@
     </properties>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -30,29 +36,23 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <finalName>PlayerManager</finalName>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.4</version>
                 <configuration>
                     <relocations>
                         <relocation>
-                            <pattern>com.cryptomorin.xseries</pattern>
-                            <shadedPattern>com.roughlyunderscore.all.playermanager</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>de.jeff_media.updatechecker</pattern>
-                            <shadedPattern>com.roughlyunderscore.all.playermanager.playermanager.updatechecker</shadedPattern>
+                            <pattern>org.bstats</pattern>
+                            <shadedPattern>com.roughlyunderscore.all.playermanager.playermanager.libs.org.bstats</shadedPattern>
                         </relocation>
                     </relocations>
-                    <filters>
-                        <filter>
-                            <artifact>*:*</artifact>
-                            <excludes>
-                                <exclude>com/cryptomorin/xseries/XBiome*</exclude>
-                                <exclude>com/cryptomorin/xseries/NMSExtras*</exclude>
-                                <exclude>com/cryptomorin/xseries/NoteBlockMusic*</exclude>
-                            </excludes>
-                        </filter>
-                    </filters>
                 </configuration>
                 <executions>
                     <execution>
@@ -60,19 +60,10 @@
                         <goals>
                             <goal>shade</goal>
                         </goals>
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
     </build>
 
     <repositories>
@@ -106,6 +97,12 @@
             <groupId>de.jeff_media</groupId>
             <artifactId>SpigotUpdateChecker</artifactId>
             <version>1.2.5</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.bstats</groupId>
+            <artifactId>bstats-bukkit</artifactId>
+            <version>2.2.1</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
