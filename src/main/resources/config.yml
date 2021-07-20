@@ -4,7 +4,7 @@ renewTime: 20
 # Selected from below options.
 lang: 'en'
 
-# Enable bStats for PlayerManager or not (will collect the renew time and the language)
+# Enable bStats for PlayerManager or not (will collect the player count, renew time and the language)
 bStats: true
 
 

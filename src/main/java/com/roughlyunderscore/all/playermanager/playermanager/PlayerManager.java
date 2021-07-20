@@ -30,7 +30,7 @@ public final class PlayerManager extends JavaPlugin {
                 .checkEveryXHours(24);
 
         if (getConfig().getBoolean("bStats")) {
-            Metrics metrics = new Metrics(this, id);
+            Metrics metrics = new Metrics(this, 12131);
             metrics.addCustomChart(new SimplePie("Renew time", () -> String.valueOf(getConfig().getInt("renew-time"))));
             metrics.addCustomChart(new SimplePie("Language", () -> getConfig().getString("lang")));
         }
