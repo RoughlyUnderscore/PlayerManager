@@ -1,8 +1,12 @@
 # Delay (in ticks), after which the data for all online players will be renewed.
 renewTime: 20
 
-lang: 'en'
 # Selected from below options.
+lang: 'en'
+
+# Enable bStats for PlayerManager or not (will collect the renew time and the language)
+bStats: true
+
 
 en:
   could-not-save-file: '&cCould not save file &6%name% &c!'

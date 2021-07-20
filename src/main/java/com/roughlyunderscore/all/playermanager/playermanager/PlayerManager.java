@@ -6,7 +6,6 @@ import com.roughlyunderscore.all.playermanager.playermanager.listeners.OnJoin;
 import de.jeff_media.updatechecker.UpdateChecker;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
-import org.bstats.charts.SingleLineChart;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -15,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
-
-import java.util.concurrent.Callable;
 
 public final class PlayerManager extends JavaPlugin {
 
@@ -32,13 +29,12 @@ public final class PlayerManager extends JavaPlugin {
                 .checkNow()
                 .checkEveryXHours(24);
 
-        Metrics metrics = new Metrics(this, id);
-        metrics.addCustomChart(new SingleLineChart("Players", new Callable<Integer>() {
-            @Override
-            public Integer call() throws Exception {
-                return Bukkit.getOnlinePlayers().size();
-            }
-        }));
+        if (getConfig().getBoolean("bStats")) {
+            Metrics metrics = new Metrics(this, id);
+            metrics.addCustomChart(new SimplePie("Renew time", () -> String.valueOf(getConfig().getInt("renew-time"))));
+            metrics.addCustomChart(new SimplePie("Language", () -> getConfig().getString("lang")));
+        }
+
 
         FileConfiguration config = this.getConfig();
         config.options().copyDefaults(true);
